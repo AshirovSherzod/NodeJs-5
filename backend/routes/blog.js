@@ -5,7 +5,6 @@ import { Blogs, validationBlog } from "../schema/blogSchema.js"
 import { auth } from "../middleware/auth.js"
 const router = express.Router()
 
-
 router.get("/", auth, async (req, res) => {
     try {
         const { limit, skip } = req.query
@@ -147,14 +146,14 @@ router.delete("/:id", async (req, res) => {
     }
 })
 
-router.put("/:id", async (req, res) => {
+router.put("/:id", async (req, res) => { 
     try {
         const { id } = req.params
 
-        const blog = await Blogs.findByIdAndUpdate(id, req.body, { new: true })
+        const blog = await Blogs.findByIdAndUpdate(id, req.body, { new: true }).select("-password")
 
         res.status(200).json({
-            msg: "blog is updated",
+            msg: "User is updated",
             variant: "success",
             payload: blog
         })

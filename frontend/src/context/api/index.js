@@ -6,7 +6,7 @@ const baseQuery = async (args, api, extraOptions) => {
   const rawBaseQuery = fetchBaseQuery({
     baseUrl: "http://localhost:8000",
     prepareHeaders: (headers) => {
-      const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmFmYmUzMjJhMDMzYmZhYTNjOGVhODgiLCJpYXQiOjE3MjI4MDg3MjR9.DYPXOO0TAAbYN1LmW-7QRlZsogS4pDW8p1AUDxba0os"    //localStorage.getItem("x-auth-token");
+      const token = localStorage.getItem("x-auth-token");
       if (token) {
         headers.set("Authorization", `Bearer ${token}`);
       }

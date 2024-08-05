@@ -17,6 +17,14 @@ export const productApi = api.injectEndpoints({
       }),
       invalidatesTags: ["Users"],
     }),
+    signinUser: build.mutation({
+      query: (body) => ({
+        url: "/users/sign-in",
+        method: "POST",
+        body,
+      }),
+      invalidatesTags: ["Users"],
+    }),
     deleteUser: build.mutation({
       query: (id) => ({
         url: `/users/${id}`,
@@ -40,4 +48,5 @@ export const {
   useCreateUserMutation,
   useDeleteUserMutation,
   useUpdateUserMutation,
+  useSigninUserMutation,
 } = productApi;
